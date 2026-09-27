@@ -1,0 +1,138 @@
+EL PODER Y EL DERECHO — DE LA TRIBU A COLOMBIA
+Servidor propio con TRES pantallas distintas:
+  1. La que se proyecta al público (limpia, sin botones).
+  2. El panel de control, para ustedes (botones, cronómetro, tiempos).
+  3. Lo que ve el público en su celular.
+
+QUÉ NECESITAS
+- El computador que va a proyectar, con Node.js instalado (nodejs.org — cualquier
+  versión reciente sirve). No hace falta instalar nada más: el servidor no usa
+  paquetes externos, solo Node.
+- Internet en el computador que proyecta (wifi del salón o su propio módem/datos).
+  Los celulares del público pueden unirse por la MISMA wifi o por sus propios
+  datos móviles — no hace falta que estén en la misma red que el computador.
+- Un segundo dispositivo (celular o laptop) para el panel de control — así
+  quien no está hablando puede manejar la exposición sin tocar el computador
+  que proyecta.
+
+CÓMO ARRANCAR (el día de la exposición)
+1. Conecta el computador a internet (wifi del salón o lo que tengas a mano).
+2. Abre una terminal en esta carpeta y ejecuta:
+       node server.js
+   La terminal va a mostrar algo como:
+
+       Pantalla para proyectar:   http://localhost:4321/
+       Panel de control (Uds.):   http://localhost:4321/expositor
+       Celulares (misma wifi):    http://192.168.1.23:4321/telefono
+       Iniciando acceso por internet (datos móviles)…
+       Internet (datos móviles):  https://algo-al-azar.trycloudflare.com/telefono
+
+   La última línea tarda unos 3-8 segundos en aparecer: arranca automáticamente
+   un túnel de Cloudflare (gratis, sin cuenta) que le da al servidor una
+   dirección pública real, además de la dirección de la wifi local.
+3. En el computador que proyecta, abre http://localhost:4321/ — ponla en
+   pantalla completa (F11). Esta pantalla NO tiene botones: solo refleja lo
+   que hagan desde el panel de control. No hace falta tocarla más.
+4. En OTRO dispositivo (su celular, por ejemplo), abre
+   http://localhost:4321/expositor — ese es el panel de control: ahí están
+   los botones de avanzar/retroceder, revelar respuestas, el cronómetro con
+   los tiempos del guion, y el código QR para que el público se una.
+   (Si el celular del panel no está en la misma wifi que el computador,
+   usa la dirección de internet — la que empieza por https://...trycloudflare.com
+   — en vez de la IP local.)
+5. Deja la terminal abierta durante toda la exposición: si la cierras, el
+   servidor se apaga y las tres pantallas se desconectan.
+
+IMPORTANTE — PRIVACIDAD: mientras el servidor esté corriendo, la dirección
+de internet (https://....trycloudflare.com) queda abierta para CUALQUIERA que
+la tenga, no solo para tu salón — es un enlace al azar y nadie más lo conoce,
+pero no la compartas fuera de la exposición. Si prefieres que solo funcione
+por wifi local (sin exponerlo a internet), arranca con:
+       NO_TUNNEL=1 node server.js
+  (en PowerShell:  $env:NO_TUNNEL=1; node server.js )
+
+EL PANEL DE CONTROL (/expositor)
+- Cronómetro: "Iniciar cronómetro" lo pone en marcha. Debajo muestra en qué
+  bloque van según el guion (ej. "Bloque 8 · Colombia — debería terminar en
+  el minuto 53") y si van a tiempo o atrasados.
+- Anterior / Siguiente: avanzan la diapositiva en la pantalla que proyecta.
+- "Ir a diapositiva n.°": salta directo a un número si necesitan aplicar el
+  plan de recorte del guion sin pasar una por una.
+- Debajo aparece la actividad de la diapositiva actual (si tiene): pistas de
+  "¿quién soy?", votos en vivo de la clasificación de derechos/quiz/tutela
+  con botón "Revelar respuesta" y "Siguiente ítem →", cuántos celulares se
+  unieron con cada rol en Atenas, o las respuestas de texto del cierre.
+- Al final, el código QR y la dirección para que el público se una — está
+  siempre visible por si alguien llega tarde.
+
+CÓMO SE MANEJA EN VIVO
+- Todo el control vive en /expositor. La pantalla que se proyecta (/) es de
+  solo lectura: no reacciona al teclado ni al mouse, solo muestra lo que el
+  panel de control indica.
+- En las diapositivas con actividad, lo que ve el público en su celular está
+  sincronizado con el panel de control:
+    · Atenas (DIAPO 10): cada celular recibe un rol al azar (ciudadano,
+      mujer, esclavo, extranjero) apenas se conecta. El panel y la pantalla
+      muestran cuántos hay de cada uno, en vivo.
+    · "¿Quién soy?" (DIAPO 14-17) y los casos de tutela (DIAPO 34-36): el
+      celular muestra las pistas/el caso; al pulsar "Revelar respuesta" en
+      el panel, se revela al mismo tiempo en la pantalla y en los celulares.
+    · Clasificación de derechos (DIAPO 27) y quiz (DIAPO 37): el celular
+      muestra la pregunta y los botones de respuesta. El panel y la pantalla
+      muestran el conteo de votos en vivo. "Revelar respuesta" marca la
+      correcta a todos; "Siguiente ítem →" pasa a la siguiente pregunta.
+    · Cierre (DIAPO 39): el público escribe en su celular qué ley cambiaría;
+      los mensajes aparecen en vivo en el panel y en la pantalla.
+- Cada celular vota una sola vez por pregunta (el servidor lo controla). Si
+  alguien recarga la página, mantiene su mismo rol de Atenas.
+
+SI ALGO FALLA
+- Si el QR no conecta, prueben escribiendo la URL a mano; el panel de
+  control muestra la dirección de internet y la de wifi local.
+- Si no aparece la línea "Internet (datos móviles)" tras 10-15 segundos,
+  revisa que exista el archivo tools/cloudflared.exe y que el computador
+  tenga internet; mientras tanto, el público puede unirse igual por la
+  wifi local.
+- Si se corta la conexión a mitad de la exposición, el celular muestra un
+  aviso de "reconectando"; la pantalla que proyecta y el panel de control
+  se reconectan solos apenas vuelva la señal.
+- Para reiniciar desde cero (por ejemplo, en el ensayo), cierra la terminal
+  (Ctrl+C) y vuelve a correr "node server.js": el cronómetro, los votos,
+  roles y textos se borran y empieza limpio (y la dirección de internet
+  cambia, porque el túnel es nuevo cada vez).
+
+ARCHIVOS
+- server.js: el servidor (Node, sin dependencias externas).
+- deck.js: todo el contenido de las 41 diapositivas, sus actividades y la
+  tabla de tiempos del guion — aquí se edita el texto si algo cambia.
+- public/projection.html, projection.css, projection.js: la pantalla que se
+  proyecta (solo lectura).
+- public/admin.html, admin.css, admin.js: el panel de control (/expositor).
+- public/phone.html, phone.css, phone.js: lo que ve el público.
+- hero.png: ilustración de fondo de la diapositiva de título.
+- tools/cloudflared.exe: el programa que crea el acceso por internet.
+  No lo borres. Si algún día falta, descárgalo de nuevo desde
+  https://github.com/cloudflare/cloudflared/releases (archivo
+  "cloudflared-windows-amd64.exe", renómbralo a "cloudflared.exe" y
+  guárdalo en la carpeta tools/).
+
+CÓMO PONER LAS FOTOS REALES (reemplazar los recuadros placeholder)
+Cada diapositiva (salvo la de título) muestra a la derecha un recuadro con
+un ícono y una descripción de qué foto debería ir ahí (ej. "Estatua o
+relieve de Hatshepsut como faraona"). Para reemplazarlo:
+1. Crea la carpeta public/images si no existe.
+2. Guarda la foto con el nombre exacto  diapo-<número>.jpg
+   Ejemplos:  diapo-7.jpg · diapo-14.jpg · diapo-6A.jpg · diapo-27.jpg
+   (el número es el que aparece en el guion, junto a [DIAPO n]).
+3. Recarga la página que proyecta. No hay que tocar ningún código: si el
+   archivo existe, reemplaza automáticamente el placeholder.
+
+La guía completa para ustedes como expositores (qué dice cada uno, tiempos,
+preguntas sembradas, plan de recorte) sigue siendo el PDF del guion — esta
+carpeta es solo lo que se proyecta, el panel de control, y lo que ve el
+público en su celular.
+
+ANTES DEL DÍA: haz al menos un ensayo completo con dos o tres celulares
+reales — prueba que al menos uno se una por wifi y otro por datos móviles
+(con la wifi del celular apagada), y que el panel de control (/expositor)
+funcione bien desde un celular distinto al que proyecta.

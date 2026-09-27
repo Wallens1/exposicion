@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,560;1,9..144,420&family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   SISTEMA DE DISEÑO — editorial / archivo institucional.
+   Dos familias: Fraunces (display, editorial, con carácter)
+   e Inter (texto, datos, microtipografía). Un color principal
+   (--accent, terracota/óxido), uno secundario (--accent2,
+   verdigris) y neutros cálidos. Sin tarjetas repetidas: los
+   componentes de abajo son diagramas, líneas de tiempo,
+   comparaciones y citas — no cajas decorativas.
+   ========================================================= */
+
+:root{
+  --bg:#14120f;        /* negro cálido, no azul corporativo */
+  --bg2:#1b1814;       /* superficie apenas elevada — se usa poco, nunca como "tarjeta" */
+  --ink:#f2ece0;       /* blanco papel, no blanco puro */
+  --muted:#9c9184;     /* piedra cálida */
+  --faint:#6c6459;     /* aún más apagado, para microtipografía */
+  --line:#f2ece02b;    /* filete sobre fondo oscuro */
+  --accent:#c1512f;    /* terracota / óxido — color principal, único acento de énfasis */
+  --accent-ink:#f4ddd2;
+  --accent2:#6f9686;   /* verdigris apagado — secundario, series/contraste, nunca decorativo */
+  --ok:#8fb89a;
+  --warn:#d18a4a;
+  --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', Arial, sans-serif;
+  --max:1320px;
+  --margin:clamp(24px,5vw,72px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:transparent;border:none}
+button:disabled{cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);margin:0;font-weight:480}
+p{margin:0}
+.hidden,[hidden]{display:none!important}
+::selection{background:var(--accent);color:var(--bg)}
+
+/* ---------- tipografía editorial ---------- */
+.kicker{font:600 11px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.kicker.muted{color:var(--muted)}
+.eyebrow{font:600 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block}
+
+.h-display{font-family:var(--serif);font-weight:480;font-size:clamp(38px,5.4vw,84px);line-height:1.02;letter-spacing:-.01em}
+.h-display em{font-style:italic;font-weight:420;color:var(--accent)}
+.h-sub{font-family:var(--serif);font-weight:460;font-size:clamp(22px,2.6vw,34px);line-height:1.15;letter-spacing:-.005em}
+.h-sub em{font-style:italic;color:var(--accent)}
+
+.lede{font:400 16px/1.6 var(--sans);color:var(--muted);max-width:52ch}
+.lede.large{font-size:clamp(17px,1.5vw,20px)}
+
+.num-mega{font-family:var(--serif);font-weight:420;font-size:clamp(72px,13vw,196px);
+  line-height:.86;letter-spacing:-.02em;color:var(--accent);font-variant-numeric:oldstyle-nums}
+.num-mega .unit{font-family:var(--sans);font-weight:600;font-size:clamp(14px,1.3vw,18px);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:6px;vertical-align:top}
+
+.quote-ed{position:relative;font-family:var(--serif);font-style:italic;font-weight:420;
+  font-size:clamp(22px,3vw,38px);line-height:1.32;color:var(--ink);max-width:38ch}
+.quote-ed .mark{position:absolute;top:-.28em;left:-.05em;font-size:2em;color:var(--accent);
+  font-style:normal;opacity:.55;font-family:var(--serif)}
+.quote-ed .src{display:block;margin-top:16px;font-family:var(--sans);font-style:normal;
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+
+.cap{font:500 13px/1.5 var(--sans);color:var(--faint)}
+.mono-tag{font:500 11px/1.4 var(--sans);letter-spacing:.08em;color:var(--faint);border:1px solid var(--line);
+  border-radius:2px;padding:2px 7px;display:inline-block}
+
+/* ---------- retícula editorial ---------- */
+.comp{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,28px);align-items:start}
+.c1{grid-column:span 1}.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}
+.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}
+.c9{grid-column:span 9}.c10{grid-column:span 10}.c11{grid-column:span 11}.c12{grid-column:span 12}
+.s2{grid-column-start:2}.s3{grid-column-start:3}.s4{grid-column-start:4}.s5{grid-column-start:5}
+.s6{grid-column-start:6}.s7{grid-column-start:7}.s8{grid-column-start:8}.s9{grid-column-start:9}
+.s10{grid-column-start:10}
+.self-end{align-self:end}
+.self-center{align-self:center}
+.justify-end{justify-self:end;text-align:right}
+
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+.rule-strong{border:0;border-top:1px solid var(--accent);margin:0}
+.rail{position:relative;padding-left:20px}
+.rail::before{content:'';position:absolute;left:0;top:.15em;bottom:.15em;width:1px;background:var(--line)}
+
+/* ---------- líneas de tiempo (línea real, no cajas) ---------- */
+.timeline{position:relative;padding-top:8px}
+.timeline::before{content:'';position:absolute;top:24px;left:0;right:0;height:1px;background:var(--line)}
+.timeline-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:clamp(10px,2vw,24px)}
+.timeline-item{position:relative;padding-top:34px}
+.timeline-item::before{content:'';position:absolute;top:20px;left:0;width:7px;height:7px;border-radius:50%;
+  background:var(--accent);transform:translateY(-3px)}
+.timeline-item .yr{display:block;font:600 13px/1.3 var(--sans);letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+.timeline-item h3{font-size:17px;font-weight:520;margin-bottom:5px;font-family:var(--serif)}
+.timeline-item p{color:var(--muted);font-size:13.5px;line-height:1.5}
+
+/* ---------- secuencia / flujo (con flechas, no tarjetas) ---------- */
+.flow{display:flex;align-items:flex-start;gap:0}
+.flow-step{flex:1;min-width:0}
+.flow-step .n{display:block;font:600 11px var(--sans);letter-spacing:.1em;color:var(--accent);margin-bottom:8px}
+.flow-step h3{font-size:16px;margin-bottom:4px}
+.flow-step p{color:var(--muted);font-size:13.5px;line-height:1.5}
+.flow-arrow{flex:0 0 auto;align-self:center;color:var(--faint);font-family:var(--serif);font-size:22px;
+  padding:0 clamp(8px,1.6vw,20px);opacity:.7}
+
+/* ---------- proporción (unidades reales, ej. 1 de cada 10) ---------- */
+.units{display:flex;gap:6px;flex-wrap:wrap}
+.units i{display:block;width:10px;height:26px;background:var(--line);border-radius:1px;font-style:normal}
+.units i.on{background:var(--accent)}
+
+/* ---------- comparación asimétrica (no dos tarjetas iguales) ---------- */
+.compare{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(20px,3vw,40px)}
+.compare .div{background:var(--line)}
+.compare h3{font-size:15px;margin-bottom:8px;font-family:var(--sans);font-weight:600}
+.compare p{color:var(--muted);font-size:14px;line-height:1.55}
+
+/* ---------- estructura jerárquica (bandas apiladas, no cajas) ---------- */
+.tiers{display:flex;flex-direction:column;gap:0}
+.tier{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;
+  padding:14px 0;border-top:1px solid var(--line)}
+.tier:last-child{border-bottom:1px solid var(--line)}
+.tier .roman{font-family:var(--serif);font-size:22px;color:var(--accent);font-style:italic}
+.tier h3{font-size:15.5px;font-weight:600;font-family:var(--sans)}
+.tier .ex{color:var(--muted);font-size:13px;text-align:right}
+
+/* ---------- diagrama hub (centro + ramas) ---------- */
+.hub{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
+.hub-center{text-align:center;padding:0 18px}
+.hub-center .num-mega{font-size:clamp(48px,7vw,88px)}
+.hub-branches{display:flex;flex-direction:column;gap:22px}
+.hub-branches.left{align-items:flex-end;text-align:right}
+.hub-branch{position:relative;padding:0 16px}
+.hub-branch h3{font-size:14.5px;font-weight:600;margin-bottom:3px}
+.hub-branch p{color:var(--muted);font-size:12.5px;line-height:1.45;max-width:26ch}
+
+/* ---------- mapa / territorio con anotaciones ---------- */
+.map-note{display:grid;grid-template-columns:1fr;gap:10px}
+.map-note-list{display:flex;flex-direction:column}
+.map-item{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.map-item:last-child{border-bottom:1px solid var(--line)}
+.map-item .pin{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:16px}
+.map-item h3{font-size:14.5px;font-weight:600;margin-bottom:3px}
+.map-item p{color:var(--muted);font-size:13px;line-height:1.5}
+
+/* ---------- expediente / caso (para tutela) ---------- */
+.case{border-top:1px solid var(--accent);padding-top:16px}
+.case-num{font:600 11px var(--sans);letter-spacing:.1em;color:var(--accent)}
+.case h3{font-size:clamp(19px,2.4vw,26px);margin:10px 0 0;font-weight:460;max-width:24ch}
+.case .verdict{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.case .verdict .v{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ok)}
+.case .verdict.no .v{color:var(--warn)}
+.case .verdict p{color:var(--muted);font-size:14px;margin-top:6px;line-height:1.5}
+
+/* ---------- retrato (imagen dominante para personajes) ---------- */
+.portrait-frame{position:relative;background:var(--bg2);border:1px solid var(--line);min-height:220px;overflow:hidden}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait-frame img.broken{display:none}
+.portrait-fallback{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;padding:24px;text-align:center;color:var(--muted);background:var(--bg2)}
+.portrait-frame img.broken + .portrait-fallback{display:flex}
+.portrait-fallback svg{color:var(--accent);opacity:.8}
+.portrait-fallback span{font-size:12.5px;line-height:1.5;max-width:210px}
+.portrait-cap{font:500 12px var(--sans);color:var(--faint);margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+
+/* ---------- imagen editorial genérica (mapas, artefactos, escenas) ---------- */
+.frame{position:relative;background:var(--bg2);border:1px solid var(--line);overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame img.broken{display:none}
+.frame-fallback{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;padding:24px;text-align:center;color:var(--muted);background:var(--bg2)}
+.frame img.broken + .frame-fallback{display:flex}
+.frame-fallback svg{color:var(--accent);opacity:.8}
+.frame-fallback span{font-size:12.5px;line-height:1.5;max-width:220px}
+
+/* ---------- actividad (mínima, sin caja de "app") ---------- */
+.activity{border-left:2px solid var(--accent);padding-left:18px}
+.activity .kicker{margin-bottom:6px}
+.activity h3{font-size:clamp(17px,2vw,22px);font-weight:480;font-family:var(--serif)}
+.activity p{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* ---------- votación / roles / respuestas (paneles vivos, funcionales) ---------- */
+.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.choice{border:1px solid var(--faint);border-radius:2px;padding:11px 16px;font-size:14px;min-height:44px}
+.choice:hover{border-color:var(--accent);color:var(--accent)}
+.choice.selected{border-color:var(--accent);color:var(--accent)}
+.choice.correct{border-color:var(--ok);color:var(--ok)}
+.choice.wrong{border-color:var(--warn);color:var(--warn)}
+.choice:disabled{cursor:default;opacity:.75}
+.feedback{min-height:20px;margin-top:10px;color:var(--accent2);font-size:13.5px}
+
+.tally{margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.tally-row{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.tally-row .label{width:140px;flex:0 0 auto;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tally-bar{flex:1;height:2px;background:var(--line)}
+.tally-bar span{display:block;height:100%;background:var(--accent)}
+.tally-row.is-correct .label{color:var(--ok)}
+.tally-row.is-correct .tally-bar span{background:var(--ok)}
+.tally-count{width:28px;text-align:right;color:var(--faint)}
+
+.role-counts{display:flex;gap:0;margin-top:14px;border-top:1px solid var(--line)}
+.role-chip{flex:1;padding:12px 10px 0;border-right:1px solid var(--line)}
+.role-chip:last-child{border-right:0}
+.role-chip .n{font:420 30px var(--serif);color:var(--accent)}
+.role-chip .l{color:var(--muted);font-size:11.5px;line-height:1.35;margin-top:2px}
+
+.live-texts{display:flex;flex-direction:column;margin-top:10px}
+.live-texts .t{padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink)}
+.live-texts .empty{color:var(--muted);font-size:13px;padding:9px 0;border-top:1px solid var(--line)}
+
+.reveal-btn{border:1px solid var(--accent);color:var(--accent);border-radius:2px;padding:10px 18px;
+  font-size:13px;font-weight:600;min-height:42px}
+.reveal-btn:hover{background:var(--accent);color:var(--bg)}
+.reveal-btn:disabled{opacity:.5}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .compare{grid-template-columns:1fr}
+  .compare .div{display:none}
+  .hub{grid-template-columns:1fr}
+  .hub-branches.left{align-items:flex-start;text-align:left}
+  .hub-center{padding:14px 0}
+  .flow{flex-direction:column;gap:16px}
+  .flow-arrow{display:none}
+}
+@media(max-width:600px){
+  .comp{grid-template-columns:repeat(6,1fr)}
+  .c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12{grid-column:span 6}
+  .s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9,.s10{grid-column-start:1}
+  .role-counts{flex-wrap:wrap}
+  .role-chip{flex:1 1 45%;border-right:0;border-bottom:1px solid var(--line);padding-bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

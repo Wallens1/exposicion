@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel del expositor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c151b'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23e8b965' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23e8b965'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/shared.css">
+<link rel="stylesheet" href="/admin.css">
+<script src="/admin.js" defer></script>
+</head>
+<body>
+<header class="admin-bar">
+  <span class="brand">PANEL DEL EXPOSITOR</span>
+  <span class="dot off" id="connDot"></span>
+</header>
+<main class="admin-main">
+
+  <section class="panel timer-panel">
+    <div class="timer-row">
+      <div class="clock" id="clock">00:00</div>
+      <div class="timer-target" id="timerTarget"></div>
+    </div>
+    <div class="timer-actions">
+      <button class="btn" id="timerStart" type="button">Iniciar cronómetro</button>
+      <button class="btn ghost" id="timerReset" type="button">Reiniciar</button>
+    </div>
+    <div class="timer-status" id="timerStatus"></div>
+  </section>
+
+  <section class="panel">
+    <div class="slide-info">
+      <span class="eyebrow" id="slideSection"></span>
+      <h2 id="slideTitle"></h2>
+      <span class="muted" id="slideSpeaker"></span>
+    </div>
+    <div class="nav-row">
+      <button class="btn big" id="prevBtn" type="button">‹ Anterior</button>
+      <span id="slideCounter" class="counter"></span>
+      <button class="btn big" id="nextBtn" type="button">Siguiente ›</button>
+    </div>
+    <div class="jump-row">
+      <input type="number" id="jumpInput" min="1" placeholder="Ir a diapositiva n.°">
+      <button class="btn ghost" id="jumpBtn" type="button">Ir</button>
+    </div>
+  </section>
+
+  <section class="panel" id="activityPanel"></section>
+
+  <section class="panel">
+    <span class="eyebrow">ÚNETE DESDE TU CELULAR</span>
+    <div class="join-row">
+      <img id="qrImg" alt="Código QR" width="140" height="140">
+      <div>
+        <p class="join-url" id="joinUrl">—</p>
+        <p class="lede" id="joinHelp"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body{overflow:hidden}
+.deck{position:fixed;inset:0;display:flex;flex-direction:column}
+.slide-stage{position:relative;flex:1;min-height:0}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:clamp(28px,4.2vw,64px) var(--margin) clamp(20px,3vw,40px);
+  opacity:0;transform:translateY(10px);
+  transition:opacity .3s ease,transform .3s ease;
+  pointer-events:none;
+}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:auto}
+
+.slide-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding-bottom:16px;border-bottom:1px solid var(--line);flex:0 0 auto}
+
+.slide-body{
+  flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  display:flex;flex-direction:column;justify-content:center;
+  max-width:var(--max);width:100%;margin:0 auto;padding:clamp(24px,3vw,12px) 4px;
+}
+.slide-body::-webkit-scrollbar{width:6px}
+.slide-body::-webkit-scrollbar-thumb{background:var(--line)}
+
+/* ---------- portada ---------- */
+.title-comp{padding:var(--margin);display:flex;flex-direction:column;position:relative}
+.title-comp::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,var(--bg) 42%,transparent 78%),url('/hero.png');
+  background-size:cover;background-position:78% center;filter:saturate(.35) contrast(1.05)}
+.title-comp::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 80%,transparent) 0%,transparent 30%,transparent 70%,var(--bg) 100%)}
+.title-top{display:flex;justify-content:space-between;align-items:baseline}
+.title-main{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
+.title-join{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.title-join img{width:84px;height:84px;background:#fff;padding:5px;display:block}
+.title-join .txt{font-size:11px;color:var(--muted);max-width:150px;line-height:1.45}
+.title-join .txt b{display:block;color:var(--ink);font-size:12px;margin-bottom:3px;font-weight:600}
+.title-roadmap{margin-top:clamp(20px,3vw,34px);display:flex;gap:0;overflow-x:auto}
+.title-roadmap span{flex:0 0 auto;padding:10px 20px 0 0;margin-right:20px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--muted);white-space:nowrap}
+.title-roadmap span b{color:var(--accent);font-weight:600}
+.title-bottom{display:flex;justify-content:space-between;align-items:baseline;padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}
+
+/* ---------- panel de actividad en vivo (bajo la composición, sin caja) ---------- */
+.host-panel{margin-top:clamp(20px,3vw,36px);padding-top:16px;border-top:1px solid var(--line)}
+
+/* ---------- pie: número de diapositiva, sin controles ---------- */
+.deck-foot{flex:0 0 auto;display:flex;align-items:center;gap:16px;
+  padding:9px var(--margin);border-top:1px solid var(--line)}
+.deck-foot span:first-child{font:500 11px var(--sans);color:var(--faint);letter-spacing:.06em;flex:0 0 auto}
+.progress-track{flex:1;height:1px;background:var(--line)}
+.progress-track span{display:block;height:100%;background:var(--accent);width:0;transition:width .3s ease}
+
+@media(max-width:1050px){
+  .comp{grid-template-columns:repeat(6,1fr)}
+  .c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12{grid-column:span 6}
+  .s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9,.s10{grid-column-start:1}
+}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}}
