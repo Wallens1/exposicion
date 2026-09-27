@@ -237,10 +237,17 @@ async function poll(){
   }
 }
 
+function renderRoadmap(roadmap){
+  const list = document.querySelector('#roadmapList');
+  if(!list || !roadmap) return;
+  list.innerHTML = roadmap.map(r=>`<div class="roadmap-item"><span class="y">${r.yr}</span><span class="n">${r.name}</span></div>`).join('');
+}
+
 async function boot(){
   const deck = await api('/api/deck');
   SLIDES = deck.slides;
   BLOQUE_TIMING = deck.bloqueTiming;
+  renderRoadmap(deck.roadmap);
   refreshJoinInfo();
   poll();
   setInterval(poll, 1000);

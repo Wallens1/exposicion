@@ -63,3 +63,14 @@ body{min-height:100dvh;display:flex;flex-direction:column}
 .join-row{display:flex;gap:16px;align-items:center;margin-top:10px}
 .join-row img{border-radius:4px;background:#fff;padding:6px;flex:0 0 auto}
 .join-url{font:500 14px/1.4 var(--sans);color:var(--accent);word-break:break-all;margin-bottom:6px}
+
+/* ---- hoja de ruta ---- */
+.roadmap-panel summary{cursor:pointer;list-style:none}
+.roadmap-panel summary::-webkit-details-marker{display:none}
+.roadmap-panel summary::before{content:'+ ';color:var(--accent)}
+.roadmap-panel[open] summary::before{content:'- '}
+.roadmap-list{display:flex;flex-direction:column;margin-top:14px}
+.roadmap-item{display:flex;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+.roadmap-item:last-child{border-bottom:1px solid var(--line)}
+.roadmap-item .y{flex:0 0 100px;color:var(--accent);font-weight:600}
+.roadmap-item .n{color:var(--ink)}

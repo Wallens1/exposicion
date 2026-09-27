@@ -17,7 +17,7 @@ const os = require('os');
 const crypto = require('crypto');
 const { spawn } = require('child_process');
 
-const { SLIDES, ATHENS_ROLES, BLOQUE_TIMING } = require('./deck.js');
+const { SLIDES, ATHENS_ROLES, BLOQUE_TIMING, ROADMAP } = require('./deck.js');
 
 const PORT = process.env.PORT || 4321;
 const PUBLIC_DIR = path.join(__dirname, 'public');
@@ -136,7 +136,7 @@ const server = http.createServer(async (req,res)=>{
 
   // ---- API ----
   if(pathname==='/api/deck' && req.method==='GET'){
-    sendJSON(res, { slides: SLIDES, athensRoles: ATHENS_ROLES, bloqueTiming: BLOQUE_TIMING });
+    sendJSON(res, { slides: SLIDES, athensRoles: ATHENS_ROLES, bloqueTiming: BLOQUE_TIMING, roadmap: ROADMAP });
     return;
   }
 

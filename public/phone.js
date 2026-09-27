@@ -171,11 +171,18 @@ async function ensureRole(){
   catch{ myRole = null; }
 }
 
+// Importante: render() reemplaza main.innerHTML por completo, lo que borraría
+// cualquier cosa que la persona esté escribiendo (ej. el texto del cierre) o el
+// estado de los botones si se repintara cada segundo. Por eso solo se vuelve a
+// pintar cuando cambia la diapositiva, el ítem o si se revela la respuesta,
+// nunca en cada sondeo.
+let lastRenderSig = null;
 async function poll(){
   try{
     const st = await api('/api/state');
     offlineBanner.classList.remove('show');
-    render(st);
+    const sig = `${st.slideIndex}:${st.partIndex}:${st.revealed}`;
+    if(sig !== lastRenderSig){ render(st); lastRenderSig = sig; }
   }catch{
     offlineBanner.classList.add('show');
   }

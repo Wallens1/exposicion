@@ -50,6 +50,20 @@ const BLOQUE_TIMING = [
   { bloque:9, label:'Cierre',                minutes:4,  target:57 },
 ];
 
+// Hoja de ruta solo para el panel del expositor (/expositor): fechas y nombres
+// clave para orientarse rápido durante la exposición. El público NO la ve.
+const ROADMAP = [
+  { yr:'300.000 a. C.', name:'Homo sapiens' },
+  { yr:'1754 a. C.', name:'Código de Hammurabi' },
+  { yr:'508 a. C.', name:'Atenas, nace la democracia' },
+  { yr:'27 a. C.', name:'Augusto, Roma se vuelve imperio' },
+  { yr:'1215', name:'Carta Magna' },
+  { yr:'1789', name:'Revolución francesa, Nariño' },
+  { yr:'1886', name:'Constitución colombiana centralista' },
+  { yr:'1948', name:'Declaración Universal de Derechos Humanos' },
+  { yr:'1991', name:'Constitución de Colombia' },
+];
+
 const SLIDES = [
 
 // ========== BLOQUE 1 · APERTURA ==========
@@ -65,17 +79,7 @@ const SLIDES = [
     <h1 class="h-display">De la tribu<br>a <em>Colombia.</em></h1>
     <div class="title-join" id="titleJoin"></div>
   </div>
-  <div class="title-roadmap">
-    <span><b>300.000 a. C.</b> Homo sapiens</span>
-    <span><b>1754 a. C.</b> Hammurabi</span>
-    <span><b>508 a. C.</b> Atenas</span>
-    <span><b>1215</b> Carta Magna</span>
-    <span><b>1789</b> Francia</span>
-    <span><b>1948</b> Derechos Humanos</span>
-    <span><b>1991</b> Colombia</span>
-  </div>
   <div class="title-bottom">
-    <span class="cap">Un recorrido rápido por lo que van a ver hoy</span>
     <span class="cap">300.000 años en 57 minutos</span>
   </div>`,
   phone:{ type:'info', fact:'En bandas de cazadores-recolectores nadie mandaba de forma permanente: el liderazgo se ganaba y se perdía según el prestigio.' }
@@ -90,7 +94,7 @@ const SLIDES = [
     <div class="c4"><span class="kicker">II · Carisma</span><h3 class="h-sub" style="font-size:19px;margin-top:8px">"Esta persona es excepcional"</h3><p class="lede" style="margin-top:8px">La autoridad se apoya en cualidades que el grupo admira.</p></div>
     <div class="c4"><span class="kicker">III · Ley</span><h3 class="h-sub" style="font-size:19px;margin-top:8px">"Una norma le dio el cargo"</h3><p class="lede" style="margin-top:8px">La autoridad se apoya en reglas e instituciones.</p></div>
   </div>
-  <p class="cap" style="margin-top:24px">Max Weber, sociólogo alemán (1864–1920). Son tipos ideales: en la vida real se combinan.</p>`,
+  <p class="cap" style="margin-top:24px">Max Weber, sociólogo alemán (1864–1920). Son tipos ideales. En la vida real se combinan.</p>`,
   phone:{ type:'info', fact:'Weber escribió esta teoría hace más de cien años, pero se sigue usando para analizar gobiernos actuales.' }
 },
 {
@@ -134,7 +138,7 @@ const SLIDES = [
     <div class="flow-arrow">→</div>
     <div class="flow-step"><span class="n">02 · ACUMULAR</span><h3>Riqueza</h3><p>Alguien la controla y redistribuye.</p></div>
     <div class="flow-arrow">→</div>
-    <div class="flow-step"><span class="n">03 · HEREDAR</span><h3>Cacicazgo</h3><p>El jefe ya no se gana el puesto: lo hereda.</p></div>
+    <div class="flow-step"><span class="n">03 · HEREDAR</span><h3>Cacicazgo</h3><p>El jefe ya no se gana el puesto, lo hereda.</p></div>
   </div>`,
   phone:{ type:'info', fact:'La agricultura apareció de forma independiente en al menos siete regiones distintas del planeta.' }
 },
@@ -159,10 +163,10 @@ const SLIDES = [
     <div class="c6 s7">
       <h2 class="h-display" style="font-size:clamp(26px,3vw,38px);margin-bottom:16px">Cuatro pueblos,<br>cuatro formas de <em>poder.</em></h2>
       <div class="map-note-list">
-        <div class="map-item"><span class="pin">I</span><div><h3>Muiscas — altiplano cundiboyacense</h3><p>Zipa y zaque. Poder heredado por línea materna. Tributos, sal y esmeraldas.</p></div></div>
-        <div class="map-item"><span class="pin">II</span><div><h3>Taironas — Sierra Nevada</h3><p>Poder político ligado al religioso. Hoy: koguis, arhuacos, wiwas, kankuamos y sus mamos.</p></div></div>
-        <div class="map-item"><span class="pin">III</span><div><h3>Zenúes — Sinú y San Jorge</h3><p>Un enorme sistema de canales exigía organizar el trabajo de miles de personas.</p></div></div>
-        <div class="map-item"><span class="pin">IV</span><div><h3>Calimas — Valle del Cauca</h3><p>Sociedades agrícolas. La orfebrería en oro, símbolo de poder.</p></div></div>
+        <div class="map-item"><span class="pin">I</span><div><h3>Muiscas, altiplano cundiboyacense</h3><p>Zipa y zaque. Poder heredado por línea materna. Tributos, sal y esmeraldas.</p></div></div>
+        <div class="map-item"><span class="pin">II</span><div><h3>Taironas, Sierra Nevada</h3><p>Poder político ligado al religioso. Hoy, koguis, arhuacos, wiwas, kankuamos y sus mamos.</p></div></div>
+        <div class="map-item"><span class="pin">III</span><div><h3>Zenúes, Sinú y San Jorge</h3><p>Un enorme sistema de canales exigía organizar el trabajo de miles de personas.</p></div></div>
+        <div class="map-item"><span class="pin">IV</span><div><h3>Calimas, Valle del Cauca</h3><p>Sociedades agrícolas. La orfebrería en oro, símbolo de poder.</p></div></div>
       </div>
     </div>
   </div>`,
@@ -192,10 +196,10 @@ const SLIDES = [
     <div class="c6 s7 self-center">
       <span class="kicker">Egipto</span>
       <h2 class="h-display" style="font-size:clamp(28px,3.2vw,42px);margin:8px 0 14px">El faraón<br>como <em>dios.</em></h2>
-      <p class="lede large">Hace unos 3.500 años, Hatshepsut gobernó Egipto como faraona — y se hacía representar con barba postiza, símbolo del poder real.</p>
+      <p class="lede large">Hace unos 3.500 años, Hatshepsut gobernó Egipto como faraona, y se hacía representar con barba postiza, símbolo del poder real.</p>
     </div>
   </div>`,
-  phone:{ type:'info', fact:'Hatshepsut fue una de las gobernantes con el reinado más próspero y largo de todo el Antiguo Egipto: unos 20 años.' }
+  phone:{ type:'info', fact:'Hatshepsut fue una de las gobernantes con el reinado más próspero y largo de todo el Antiguo Egipto, unos 20 años.' }
 },
 {
   diapo:'8', section:'03 · EL PODER SAGRADO', speaker:'EXPOSITOR A',
@@ -205,10 +209,10 @@ const SLIDES = [
       <p class="quote-ed"><span class="mark">"</span>Si alguien le saca un ojo a un noble, a él le sacan un ojo. Si se lo saca a un plebeyo, solo paga una suma de plata.<span class="src">Código de Hammurabi · Babilonia, hacia 1754 a. C.</span></p>
     </div>
     <div class="c4 s9 self-end">
-      <p class="cap">Casi 300 leyes grabadas en piedra — públicas, pero no iguales para todos.</p>
+      <p class="cap">Casi 300 leyes grabadas en piedra, públicas, pero no iguales para todos.</p>
     </div>
   </div>`,
-  phone:{ type:'info', fact:'La estela original con el Código de Hammurabi existe todavía: se exhibe en el museo del Louvre, en París.' }
+  phone:{ type:'info', fact:'La estela original con el Código de Hammurabi existe todavía, se exhibe en el museo del Louvre, en París.' }
 },
 {
   diapo:'9', section:'03 · EL PODER SAGRADO', speaker:'EXPOSITOR A',
@@ -221,7 +225,7 @@ const SLIDES = [
     <div class="flow-arrow">→</div>
     <div class="flow-step"><span class="n">RESULTADO</span><h3>Pierde el mandato</h3><p>El Cielo se lo retira al gobernante.</p></div>
   </div>
-  <p class="cap" style="margin-top:22px">China, dinastía Zhou, hacia 1046 a. C. — incluso un poder sagrado se puede perder.</p>`,
+  <p class="cap" style="margin-top:22px">China, dinastía Zhou, hacia 1046 a. C. Incluso un poder sagrado se puede perder.</p>`,
   phone:{ type:'info', fact:'El Mandato del Cielo se siguió usando para justificar o cuestionar dinastías chinas durante casi 3.000 años.' }
 },
 
@@ -232,7 +236,7 @@ const SLIDES = [
   body:`<div class="comp">
     <div class="c6">
       <h2 class="h-display" style="font-size:clamp(28px,3.4vw,44px)">Nace la<br><em>democracia.</em></h2>
-      <p class="lede large" style="margin-top:14px">La asamblea de ciudadanos vota leyes, guerra y paz. De ahí, "democracia": gobierno del pueblo.</p>
+      <p class="lede large" style="margin-top:14px">La asamblea de ciudadanos vota leyes, guerra y paz. De ahí, "democracia", gobierno del pueblo.</p>
       ${units(10,4)}
       <p class="cap" style="margin-top:10px">Solo cerca de 1 de cada 10 habitantes era ciudadano con derecho a voto.</p>
     </div>
@@ -253,7 +257,7 @@ const SLIDES = [
     <div class="timeline-item"><span class="yr">450 A. C.</span><h3>XII Tablas</h3><p>Las leyes se hacen públicas.</p></div>
     <div class="timeline-item"><span class="yr">27 A. C.</span><h3>Augusto</h3><p>La república se convierte en imperio.</p></div>
   </div></div>`,
-  phone:{ type:'info', fact:'Las XII Tablas se exhibían en el foro romano para que cualquiera pudiera leerlas: era una novedad que la ley fuera pública.' }
+  phone:{ type:'info', fact:'Las XII Tablas se exhibían en el foro romano para que cualquiera pudiera leerlas. Era una novedad que la ley fuera pública.' }
 },
 {
   diapo:'12', section:'04 · GRECIA Y ROMA', speaker:'EXPOSITOR B',
@@ -368,10 +372,10 @@ const SLIDES = [
     <div class="c4 s9 self-center">
       <span class="kicker">Europa · 1215</span>
       <p class="lede large" style="margin-top:8px">Los nobles ingleses obligan al rey Juan sin Tierra a firmarla. Por primera vez, un documento escrito dice que el rey también está sometido a la ley.</p>
-      <p class="cap" style="margin-top:14px">Protegía sobre todo a los nobles — pero la idea quedó sembrada.</p>
+      <p class="cap" style="margin-top:14px">Protegía sobre todo a los nobles, pero la idea quedó sembrada.</p>
     </div>
   </div>`,
-  phone:{ type:'info', fact:'Solo quedan cuatro copias originales de la Carta Magna de 1215: dos en la Biblioteca Británica y una en cada una de las catedrales de Lincoln y Salisbury.' }
+  phone:{ type:'info', fact:'Solo quedan cuatro copias originales de la Carta Magna de 1215, dos en la Biblioteca Británica y una en cada una de las catedrales de Lincoln y Salisbury.' }
 },
 {
   diapo:'19', section:'05 · IMPERIOS Y MONARQUÍAS', speaker:'EXPOSITOR A',
@@ -385,8 +389,8 @@ const SLIDES = [
     </div>
   </div>
   <p class="quote-ed" style="font-size:clamp(20px,2.4vw,30px);margin-top:32px">Una cosa es la ley escrita.<br>Otra, <em>lo que se cumple.</em></p>
-  <p class="cap" style="margin-top:14px">Resguardos y cabildos nacen en la Colonia para controlar a los indígenas — con los siglos, se vuelven herramientas de autonomía.</p>`,
-  phone:{ type:'info', fact:'Los resguardos indígenas coloniales nunca desaparecieron del todo: hoy están protegidos como tierras colectivas por la Constitución de 1991.' }
+  <p class="cap" style="margin-top:14px">Resguardos y cabildos nacen en la Colonia para controlar a los indígenas, pero con los siglos se vuelven herramientas de autonomía.</p>`,
+  phone:{ type:'info', fact:'Los resguardos indígenas coloniales nunca desaparecieron del todo. Hoy están protegidos como tierras colectivas por la Constitución de 1991.' }
 },
 
 // ========== BLOQUE 6 · LAS REVOLUCIONES ==========
@@ -408,11 +412,11 @@ const SLIDES = [
   <hr class="rule" style="margin:26px 0 22px">
   <div class="comp">
     <div class="c4"><span class="kicker">Legislativo</span><p class="lede" style="margin-top:8px">Hace las leyes.</p></div>
-    <div class="c4"><span class="kicker">Ejecutivo</span><p class="lede" style="margin-top:8px">Las ejecuta. 1789: George Washington, primer presidente.</p></div>
+    <div class="c4"><span class="kicker">Ejecutivo</span><p class="lede" style="margin-top:8px">Las ejecuta. En 1789, George Washington fue el primer presidente.</p></div>
     <div class="c4"><span class="kicker">Judicial</span><p class="lede" style="margin-top:8px">Juzga. Los tres, separados (Montesquieu).</p></div>
   </div>
-  <p class="cap" style="margin-top:24px">1787 · Nace el presidencialismo — el modelo que copiaría casi toda América Latina, incluida Colombia.</p>`,
-  phone:{ type:'info', fact:'George Washington pudo haberse reelegido indefinidamente, pero se retiró tras dos períodos — creando una costumbre que duró hasta 1940.' }
+  <p class="cap" style="margin-top:24px">1787 · Nace el presidencialismo, el modelo que copiaría casi toda América Latina, incluida Colombia.</p>`,
+  phone:{ type:'info', fact:'George Washington pudo haberse reelegido indefinidamente, pero se retiró tras dos períodos, creando una costumbre que duró hasta 1940.' }
 },
 {
   diapo:'22', section:'06 · LAS REVOLUCIONES', speaker:'EXPOSITOR B',
@@ -421,9 +425,9 @@ const SLIDES = [
     <div class="c8">
       <p class="quote-ed"><span class="mark">"</span>Los hombres nacen y permanecen libres e iguales en derechos.<span class="src">Declaración de los Derechos del Hombre y del Ciudadano · Francia, 1789</span></p>
     </div>
-    <div class="c3 s10 self-end"><p class="cap">La soberanía reside en la nación, no en el rey — aunque en la práctica excluía a mujeres y esclavos.</p></div>
+    <div class="c3 s10 self-end"><p class="cap">La soberanía reside en la nación, no en el rey, aunque en la práctica excluía a mujeres y esclavos.</p></div>
   </div>`,
-  phone:{ type:'info', fact:'Olympe de Gouges respondió en 1791 con la Declaración de los Derechos de la Mujer y la Ciudadana — y fue guillotinada dos años después.' }
+  phone:{ type:'info', fact:'Olympe de Gouges respondió en 1791 con la Declaración de los Derechos de la Mujer y la Ciudadana, y fue guillotinada dos años después.' }
 },
 {
   diapo:'23', section:'06 · LAS REVOLUCIONES', speaker:'EXPOSITOR B',
@@ -468,7 +472,7 @@ const SLIDES = [
   body:`<div class="comp">
     <div class="c5"><span class="num-mega" style="font-size:clamp(60px,8.6vw,116px)">1948</span></div>
     <div class="c6 s7 self-center">
-      <p class="lede large">Dos guerras mundiales y regímenes totalitarios. La ONU responde: por primera vez, casi todos los países aceptan que hay derechos que ningún gobierno puede quitar.</p>
+      <p class="lede large">Dos guerras mundiales y regímenes totalitarios. La ONU responde. Por primera vez, casi todos los países aceptan que hay derechos que ningún gobierno puede quitar.</p>
       <div style="display:flex;height:6px;margin-top:20px;gap:2px">
         <div style="flex:48;background:var(--accent)"></div>
         <div style="flex:8;background:var(--faint)"></div>
@@ -480,7 +484,7 @@ const SLIDES = [
       </div>
     </div>
   </div>`,
-  phone:{ type:'info', fact:'La Declaración de 1948 se votó 48 a favor, 0 en contra y 8 abstenciones — hoy es el documento más traducido del mundo.' }
+  phone:{ type:'info', fact:'La Declaración de 1948 se votó 48 a favor, 0 en contra y 8 abstenciones. Hoy es el documento más traducido del mundo.' }
 },
 {
   diapo:'27', section:'07 · SIGLO XX', speaker:'EXPOSITOR A',
@@ -513,7 +517,7 @@ const SLIDES = [
   title:'Dos siglos buscando su Constitución.',
   body:`<div class="comp"><div class="c8">
     <h2 class="h-display" style="font-size:clamp(28px,3.6vw,48px)">Dos siglos buscando<br>su <em>Constitución.</em></h2>
-    <p class="lede large" style="margin-top:18px">Siete voluntarios, siete años: 1811 · 1853 · 1863 · 1886 · 1910 · 1954 · 1991.<br>Ordénenlos de más antiguo a más reciente.</p>
+    <p class="lede large" style="margin-top:18px">Siete voluntarios, siete años, 1811 · 1853 · 1863 · 1886 · 1910 · 1954 · 1991.<br>Ordénenlos de más antiguo a más reciente.</p>
   </div></div>`,
   phone:{ type:'info', fact:'Colombia ha tenido más de diez constituciones o grandes reformas constitucionales desde 1811.' }
 },
@@ -523,11 +527,11 @@ const SLIDES = [
   body:`<h2 class="h-display" style="font-size:clamp(28px,3.4vw,44px)">Siglo <em>XIX.</em></h2>
   <div class="timeline" style="margin-top:34px"><div class="timeline-row">
     <div class="timeline-item"><span class="yr">1811</span><h3>Cundinamarca</h3><p>Monarquía constitucional, aún reconoce a Fernando VII.</p></div>
-    <div class="timeline-item"><span class="yr">1853</span><h3>Sufragio masculino</h3><p>Vélez (Santander) aprueba el voto femenino — anulado después.</p></div>
-    <div class="timeline-item"><span class="yr">1863</span><h3>Rionegro</h3><p>Extremo federal: "Estados Unidos de Colombia".</p></div>
+    <div class="timeline-item"><span class="yr">1853</span><h3>Sufragio masculino</h3><p>Vélez (Santander) aprueba el voto femenino, anulado después.</p></div>
+    <div class="timeline-item"><span class="yr">1863</span><h3>Rionegro</h3><p>Extremo federal, se llamó "Estados Unidos de Colombia".</p></div>
     <div class="timeline-item"><span class="yr">1886</span><h3>Centralismo</h3><p>Extremo centralista. Nos rige durante 105 años.</p></div>
   </div></div>`,
-  phone:{ type:'info', fact:'En 1853, la provincia de Vélez (Santander) fue de las primeras del mundo en aprobar el voto femenino — un siglo antes de que se hiciera realidad en Colombia.' }
+  phone:{ type:'info', fact:'En 1853, la provincia de Vélez (Santander) fue de las primeras del mundo en aprobar el voto femenino, un siglo antes de que se hiciera realidad en Colombia.' }
 },
 {
   diapo:'30', section:'08 · COLOMBIA', speaker:'EXPOSITOR A',
@@ -535,17 +539,17 @@ const SLIDES = [
   body:`<h2 class="h-display" style="font-size:clamp(28px,3.4vw,44px)">Siglo <em>XX.</em></h2>
   <div class="timeline" style="margin-top:34px"><div class="timeline-row">
     <div class="timeline-item"><span class="yr">1910</span><h3>Acción pública</h3><p>Cualquier ciudadano puede demandar una ley inconstitucional. Colombia, pionera.</p></div>
-    <div class="timeline-item"><span class="yr">1954</span><h3>Voto femenino</h3><p>Reconocido — ejercido por primera vez en 1957.</p></div>
+    <div class="timeline-item"><span class="yr">1954</span><h3>Voto femenino</h3><p>Reconocido, ejercido por primera vez en 1957.</p></div>
     <div class="timeline-item"><span class="yr">1986</span><h3>Alcaldes electos</h3><p>Elección popular (antes los nombraba el gobernador).</p></div>
   </div></div>
-  <p class="cap" style="margin-top:22px">Entre medio: La Violencia, el asesinato de Gaitán (1948) y el Frente Nacional (1958–1974).</p>`,
-  phone:{ type:'info', fact:'Colombia fue pionera mundial en 1910 al permitir que cualquier ciudadano —no solo abogados del Estado— demandara una ley por inconstitucional.' }
+  <p class="cap" style="margin-top:22px">Entre medio, La Violencia, el asesinato de Gaitán (1948) y el Frente Nacional (1958 a 1974).</p>`,
+  phone:{ type:'info', fact:'Colombia fue pionera mundial en 1910 al permitir que cualquier ciudadano, no solo abogados del Estado, demandara una ley por inconstitucional.' }
 },
 {
   diapo:'31', section:'08 · COLOMBIA', speaker:'EXPOSITOR A',
   title:'La Séptima Papeleta.',
   body:`<h2 class="h-display" style="font-size:clamp(28px,3.4vw,44px)">La Séptima<br><em>Papeleta.</em></h2>
-  <p class="lede large" style="margin-top:14px;max-width:60ch">Finales de los 80: crisis del narcotráfico, asesinatos de candidatos, desconfianza. Estudiantes universitarios proponen una salida.</p>
+  <p class="lede large" style="margin-top:14px;max-width:60ch">Finales de los 80. Crisis del narcotráfico, asesinatos de candidatos, desconfianza. Estudiantes universitarios proponen una salida.</p>
   <div class="flow" style="margin-top:28px">
     <div class="flow-step"><span class="n">MARZO 1990</span><h3>Una papeleta extra</h3><p>La gente pide una Asamblea Constituyente.</p></div>
     <div class="flow-arrow">→</div>
@@ -565,11 +569,11 @@ const SLIDES = [
     </div>
     <div class="hub-center"><span class="num-mega">1991</span></div>
     <div class="hub-branches">
-      <div class="hub-branch"><h3>Corte Constitucional</h3><p>Y la acción de tutela — la más usada por los colombianos.</p></div>
+      <div class="hub-branch"><h3>Corte Constitucional</h3><p>Y la acción de tutela, la más usada por los colombianos.</p></div>
       <div class="hub-branch"><h3>Constituyentes indígenas</h3><p>Lorenzo Muelas y Francisco Rojas Birry, elegidos.</p></div>
     </div>
   </div>`,
-  phone:{ type:'info', fact:'La Asamblea Constituyente de 1991 tuvo delegados de partidos nunca antes representados: el M-19, desmovilizado apenas un año antes.' }
+  phone:{ type:'info', fact:'La Asamblea Constituyente de 1991 tuvo delegados de partidos nunca antes representados, como el M-19, desmovilizado apenas un año antes.' }
 },
 {
   diapo:'33', section:'08 · COLOMBIA', speaker:'EXPOSITOR A y B',
@@ -587,33 +591,33 @@ const SLIDES = [
 },
 {
   diapo:'34', section:'08 · COLOMBIA', speaker:'EXPOSITOR A y B',
-  title:'Caso 1 — Salud.',
+  title:'Caso 1, el agua y la deuda.',
   body:`<div class="comp"><div class="c8 case">
-    <span class="case-num">CASO 01 · SALUD</span>
-    <h3>Una EPS niega un tratamiento urgente que el médico ordenó. ¿Procede?</h3>
-    <div class="answer" hidden><div class="verdict"><span class="v">Sí procede</span><p>Está en juego la salud y, en casos graves, la vida. Uno de los usos más comunes de la tutela.</p></div></div>
+    <span class="case-num">CASO 01 · UNA DEUDA</span>
+    <h3>A un adulto mayor que vive solo le suspenden el agua por una deuda que no ha podido pagar. ¿Procede?</h3>
+    <div class="answer" hidden><div class="verdict"><span class="v">Sí procede</span><p>Parece un simple cobro, algo que resolvería un juez civil. Pero el mínimo vital de agua para una persona vulnerable pesa más que la deuda, y la empresa debe garantizar al menos una cantidad básica.</p></div></div>
   </div></div>`,
-  phone:{ type:'vote', parts:[{ question:'Una EPS niega un tratamiento urgente que el médico ordenó. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:0, explanation:'Está en juego la salud y, en casos graves, la vida.' }] }
+  phone:{ type:'vote', parts:[{ question:'A un adulto mayor que vive solo le suspenden el agua por una deuda que no ha podido pagar. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:0, explanation:'El mínimo vital de agua para una persona vulnerable pesa más que la deuda pendiente.' }] }
 },
 {
   diapo:'35', section:'08 · COLOMBIA', speaker:'EXPOSITOR A y B',
-  title:'Caso 2 — Petición.',
+  title:'Caso 2, el despido.',
   body:`<div class="comp"><div class="c8 case">
-    <span class="case-num">CASO 02 · PETICIÓN</span>
-    <h3>Un estudiante envía un derecho de petición a su universidad y pasan meses sin respuesta. ¿Procede?</h3>
-    <div class="answer" hidden><div class="verdict"><span class="v">Sí procede</span><p>Pedir y recibir respuesta es un derecho fundamental. La entidad está obligada a contestar dentro de un plazo.</p></div></div>
+    <span class="case-num">CASO 02 · UN DESPIDO</span>
+    <h3>Despiden a un trabajador sin justa causa y pide, por tutela, que lo devuelvan a su puesto. ¿Procede?</h3>
+    <div class="answer" hidden><div class="verdict no"><span class="v">Por regla general, no</span><p>Suena urgente e injusto, pero existe la jurisdicción laboral, un mecanismo igual de eficaz para esto. La tutela solo entra si hay riesgo al mínimo vital o el trabajador tiene protección especial (por ejemplo, está embarazada).</p></div></div>
   </div></div>`,
-  phone:{ type:'vote', parts:[{ question:'Una universidad deja meses sin responder un derecho de petición. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:0, explanation:'Pedir y recibir respuesta es un derecho fundamental.' }] }
+  phone:{ type:'vote', parts:[{ question:'Despiden a un trabajador sin justa causa y pide, por tutela, que lo devuelvan a su puesto. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:1, explanation:'Existe la jurisdicción laboral, un mecanismo igual de eficaz, salvo que haya riesgo al mínimo vital o protección especial.' }] }
 },
 {
   diapo:'36', section:'08 · COLOMBIA', speaker:'EXPOSITOR A y B',
-  title:'Caso 3 — Convivencia.',
+  title:'Caso 3, la clínica privada.',
   body:`<div class="comp"><div class="c8 case">
-    <span class="case-num">CASO 03 · CONVIVENCIA</span>
-    <h3>El vecino pone música a todo volumen los fines de semana. ¿Procede?</h3>
-    <div class="answer" hidden><div class="verdict no"><span class="v">Por regla general, no</span><p>Existen otras vías, como la Policía o la inspección. La tutela no es para todo: es para cuando no hay otra salida.</p></div></div>
+    <span class="case-num">CASO 03 · UNA CLÍNICA</span>
+    <h3>Una clínica privada se niega a atender una urgencia médica porque el paciente no puede pagar por adelantado. ¿Procede?</h3>
+    <div class="answer" hidden><div class="verdict"><span class="v">Sí procede</span><p>Aunque la clínica es privada, no es el Estado, la tutela también procede contra particulares que prestan un servicio público como la salud. Una urgencia vital se atiende sin importar la capacidad de pago.</p></div></div>
   </div></div>`,
-  phone:{ type:'vote', parts:[{ question:'El vecino pone música a todo volumen cada fin de semana. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:1, explanation:'Por regla general, no: existen otras vías, como la Policía o la inspección.' }] }
+  phone:{ type:'vote', parts:[{ question:'Una clínica privada se niega a atender una urgencia médica porque el paciente no puede pagar por adelantado. ¿Procede la tutela?', choices:['Sí procede','No procede'], correctIndex:0, explanation:'La tutela también procede contra particulares que prestan un servicio público como la salud.' }] }
 },
 
 // ========== BLOQUE 9 · CIERRE ==========
@@ -622,7 +626,7 @@ const SLIDES = [
   title:'Quiz relámpago.',
   body:`<div class="comp"><div class="c7">
     <h2 class="h-display">Quiz <em>relámpago.</em></h2>
-    <p class="lede large" style="margin-top:16px">Cinco preguntas. Respondan desde sus celulares — la pantalla mostrará cuántos acertaron.</p>
+    <p class="lede large" style="margin-top:16px">Cinco preguntas. Respondan desde sus celulares. La pantalla mostrará cuántos acertaron.</p>
   </div></div>`,
   phone:{ type:'vote', label:'Quiz relámpago', parts:[
     { question:'Un presidente elegido en las urnas manda por legitimidad de…', choices:['Tradición','Carisma','Ley'], correctIndex:2, explanation:'La legitimidad legal se apoya en normas e instituciones.' },
@@ -642,7 +646,7 @@ const SLIDES = [
     <div class="timeline-item"><span class="yr">Hoy</span><h3>La ley</h3><p>Con mucha lucha, aprendimos a obedecer por ley.</p></div>
   </div></div>
   <p class="quote-ed" style="font-size:clamp(20px,2.4vw,30px);margin-top:34px">Al súbdito le imponen las leyes.<br>El ciudadano <em>puede cambiarlas.</em></p>`,
-  phone:{ type:'info', fact:'Recuerda tu rol en Atenas: ese mismo grupo que no podía votar es, hoy, quien sí puede — es la mejor forma de sentir la diferencia.' }
+  phone:{ type:'info', fact:'Recuerda tu rol en Atenas: ese mismo grupo que no podía votar es, hoy, quien sí puede. Es la mejor forma de sentir la diferencia.' }
 },
 {
   diapo:'39', section:'09 · CIERRE', speaker:'EXPOSITOR A y B',
@@ -655,4 +659,4 @@ const SLIDES = [
 
 ];
 
-module.exports = { SLIDES, ATHENS_ROLES, BLOQUE_TIMING };
+module.exports = { SLIDES, ATHENS_ROLES, BLOQUE_TIMING, ROADMAP };
